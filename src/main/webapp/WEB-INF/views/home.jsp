@@ -58,8 +58,8 @@
 							<td><input name="userpw" value="${memberVO.userpw}"></td>
 							<td><input name="username" value="${memberVO.username}"></td>
 							<td><input name="email" value="${memberVO.email}"></td>
-							<td><input name="regdate" value='<fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${memberVO.regdate}" />' readonly></td>
-							<td><input name="updatedate" value="${memberVO.updatedate}" disabled></td>
+							<td><input name="regdate" value='<fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${memberVO.regdate}" />'></td>
+							<td><input name="updatedate" value='<fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${memberVO.updatedate}" />'></td>
 							<td>
 							<button class="btn_update" type="button">수정</button>
 							<button class="btn_delete" type="button">삭제</button>
@@ -75,13 +75,13 @@ $(document).ready(function(){
 	$(".btn_update").on("click",function(){
 		//alert("수정버튼");
 		var click_element = $(this).parent().parent().find("form[name='form_action']");
-		//alert(click_element); //디버그
+		//alert(click_element.attr()); //디버그
 		click_element.submit();
 	});
 	$(".btn_delete").on("click",function(){
 		//alert("삭제버튼");
 		if(confirm("정말로 삭제하시겠습니까?")) {
-		var click_element = $(this).parents("form[name='form_action']");
+		var click_element = $(this).parent().parent().find("form[name='form_action']");
 		click_element.attr("action","<c:url value='/' />member_delete");
 		click_element.submit();
 		}

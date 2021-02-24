@@ -1,7 +1,6 @@
 package com.human.edu;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -9,11 +8,8 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -39,10 +35,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/member_update", method=RequestMethod.POST)
-	@InitBinder
-	public String member_update(WebDataBinder binder,MemberVO memberVO) throws Exception {
-		DateFormat  dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat,true));
+	public String member_update(MemberVO memberVO) throws Exception {
 		memberService.memberUpdate(memberVO);
 		return "redirect:/";
 	}
