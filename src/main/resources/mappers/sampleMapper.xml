@@ -7,7 +7,7 @@ insert into member
 (userid, userpw, username, email, regdate, updatedate)
 VALUES (
 #{userid}, #{userpw}, #{username}, #{email}, SYSDATE, SYSDATE
-);
+)
 </insert>
 
 <select id="memberSelect" resultType="com.human.vo.MemberVO">
